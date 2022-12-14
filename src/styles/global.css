@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
+:root{
+    --main-bg-color: #1b2028;
+    --accent-bg-color: #15181f;
+    --main-text-color: #ccccb5;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -15,8 +21,8 @@ body {
     margin: 0;
     padding: 0;
 
-    background-color: #1b2028;
-    color: #ccccb5;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
     font-family: "Roboto Mono", "Vazirmatn";
 }
 
