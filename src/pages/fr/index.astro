@@ -1,12 +1,12 @@
 ---
-import MainLayout from "../layouts/mainLayout.astro";
+import MainLayout from "../../layouts/mainLayout.astro";
 import { t, changeLanguage } from "i18next";
 import { LanguageSelector } from "astro-i18next/components";
 
-changeLanguage("en");
+changeLanguage("fr");
 ---
 
 <MainLayout title={t("home.pageTitle")}>
-  <LanguageSelector showFlag={false} class="my-select-class" />
+  <LanguageSelector showFlag={true} class="my-select-class" />
   <h1>{t("home.title")}</h1>
 </MainLayout>

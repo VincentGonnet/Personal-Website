@@ -1,0 +1,37 @@
+---
+import LanguageButton from "../components/LanguageButton.jsx";
+---
+
+<header>
+  <style>
+    #mobile-display {
+      display: flex;
+    }
+
+    #desktop-display {
+      display: none;
+    }
+
+    /* Computer format */
+    @media screen and (min-width: 768px) {
+      #mobile-display {
+        display: none;
+      }
+
+      #desktop-display {
+        display: flex;
+      }
+    }
+  </style>
+
+  <div id="desktop-display">
+    <LanguageButton client:visible />
+  </div>
+  <div id="mobile-display">
+    <div id="hamburger">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </div>
+</header>

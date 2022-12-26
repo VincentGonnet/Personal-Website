@@ -1,33 +1,20 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import menuIcon from '@iconify/icons-mdi/translate';
+import { changeLanguage } from "i18next";
 
 function ChangeLanguageButton() {
 
-  const [language, setLanguage] = React.useState('en');
-
-  React.useEffect(() => {
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage) {
-      setLanguage(savedLanguage);
-    }
-  }, []);
-
-  React.useEffect(() => {
-    localStorage.setItem('language', language);
-  }, [language]);
-
-  const changeLanguage = (lang) => {
-    setLanguage(lang);
+  const changeLanguageAction = (lang) => {
     const dropdown = document.querySelector('.changeLanguageBox');
     dropdown.classList.add('disabled-language-box');
+    changeLanguage("fr");
   };
 
 
   const [isOpen, setIsOpen] = React.useState(false);
   const button = React.useRef(null);
   React.useEffect(() => window.addEventListener('click', ev => {
-    console.log("clicked !")
     if(button.current && button.current.contains(ev.target)) {setIsOpen(!isOpen)}
     else {setIsOpen(false)}
   }), []);
@@ -78,8 +65,8 @@ function ChangeLanguageButton() {
         <Icon icon={menuIcon} style={{ order: 1, fontSize: 30 }} />
       </button>
       <div className={"changeLanguageBox " + (isOpen ? '' : 'disabled-language-box')}>
-        <button onClick={() => changeLanguage("fr")} className="language-button">Français</button>
-        <button onClick={() => changeLanguage("en")} className="language-button">English</button>
+        <button onClick={() => changeLanguageAction("fr")} className="language-button">Français</button>
+        <button onClick={() => changeLanguageAction("en")} className="language-button">English</button>
       </div>
       
     </div>
