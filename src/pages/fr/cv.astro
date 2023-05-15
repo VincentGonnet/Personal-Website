@@ -1,5 +1,4 @@
 ---
-import { localizePath } from "astro-i18next";
 import MainLayout from "../../layouts/mainLayout.astro";
 import { t, changeLanguage } from "i18next";
 
@@ -7,6 +6,5 @@ changeLanguage("fr");
 ---
 
 <MainLayout title={t("home.pageTitle")}>
-  <h1>{t("home.title")}</h1>
-  <a href={localizePath("/cv")}>CV</a>
+  <h1>{t("cv.title")}</h1>
 </MainLayout>

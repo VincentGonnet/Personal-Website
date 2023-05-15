@@ -1,5 +1,5 @@
 ---
-import LanguageButton from "../components/LanguageButton.jsx";
+import { localizePath } from "astro-i18next";
 ---
 
 <header>
@@ -9,6 +9,7 @@ import LanguageButton from "../components/LanguageButton.jsx";
     }
 
     #desktop-display {
+      width: 100%;
       display: none;
     }
 
@@ -24,8 +25,116 @@ import LanguageButton from "../components/LanguageButton.jsx";
     }
   </style>
 
+  <script>
+    window.addEventListener("click", (event) => {
+      const languageButton = document.querySelector(".language-button");
+      const languageButtonSvg = document.querySelector(".language-icon");
+      const languageButtonPath = document.querySelector(".language-icon-path");
+      const changeLanguageBox = document.querySelector(".changeLanguageBox");
+
+      const languageButtonFr = document.querySelector("#language-button-fr");
+      const languageButtonEn = document.querySelector("#language-button-en");
+
+      if (
+        event.target === languageButton ||
+        event.target === languageButtonSvg ||
+        event.target === languageButtonPath
+      ) {
+        changeLanguageBox.classList.toggle("disabled-language-box");
+      } else {
+        changeLanguageBox.classList.add("disabled-language-box");
+      }
+
+      let targettedLanguage = null;
+      if (event.target === languageButtonFr) {
+        targettedLanguage = "fr";
+      } else if (event.target === languageButtonEn) {
+        targettedLanguage = "en";
+      }
+
+      if (targettedLanguage != null) {
+        let currentLanguage = "en";
+        if (window.location.pathname.startsWith("/fr")) {
+          currentLanguage = "fr";
+        }
+        if (targettedLanguage != currentLanguage) {
+          if (targettedLanguage == "fr") {
+            window.location.pathname = "/fr" + window.location.pathname;
+          } else {
+            window.location.pathname = window.location.pathname.replace(
+              "/fr",
+              ""
+            );
+          }
+        }
+      }
+    });
+  </script>
+
+  <style>
+    .language-icon {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border: none;
+      color: var(--main-text-color);
+      cursor: pointer;
+    }
+    .changeLanguageBox {
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 5px;
+      margin-left: -28px;
+      background-color: var(--accent-bg-color);
+      color: var(--main-text-color);
+      border-radius: 5px;
+      padding: 5px;
+      opacity: 1;
+      transition: all 0.1s ease-in-out;
+    }
+    .language-button {
+      background-color: var(--main-background-color);
+      color: var(--main-text-color);
+      border: none;
+      font-size: 1rem;
+      padding: 0.2rem;
+      font-family: "Roboto Mono", sans-serif;
+      cursor: pointer;
+    }
+    .disabled-language-box {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+
   <div id="desktop-display">
-    <LanguageButton client:visible />
+    <a class="back-home" href={localizePath("/")}>Vincent Gonnet</a>
+    <a href={localizePath("/cv")}>CV</a>
+    <div class="language-button">
+      <svg
+        class="language-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        viewBox="0 0 24 24"
+        ><path
+          class="language-icon-path"
+          fill="currentColor"
+          d="m12.87 15.07l-2.54-2.51l.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35C8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5l3.11 3.11l.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7l1.62-4.33L19.12 17h-3.24Z"
+        ></path>
+      </svg>
+      <div class="changeLanguageBox disabled-language-box">
+        <button class="language-button" id="language-button-fr">Français</button
+        >
+        <button class="language-button" id="language-button-en">English</button>
+      </div>
+    </div>
+    <!-- <LanguageButton client:visible /> -->
   </div>
   <div id="mobile-display">
     <div id="hamburger">

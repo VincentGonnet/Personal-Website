@@ -1,13 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 :root{
-    --main-bg-color: #1b2028;
+    --main-bg-color: rgb(15 23 42);
     --accent-bg-color: #15181f;
-    --main-text-color: #ccccb5;
-
-    --light-bg-color: #f5f5f5;
-    --light-accent-bg-color: #e0e0e0;
-    --light-text-color: #000000;
+    --main-text-color: rgb(243 244 246);
 }
 
 * {
@@ -30,17 +26,31 @@ body {
     font-family: "Roboto Mono", "Vazirmatn";
 }
 
-.light {
-    background-color: var(--light-bg-color);
-    color: var(--light-text-color);
-}
-
 header {
-    max-width: 80%;
+    max-width: 72rem;
     width: 100%;
+    min-height: 65px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    text-align: center;
     padding: 1rem;
+}
+
+header a {
+    text-decoration: none;
+    color: var(--main-text-color);
+    margin: auto 1rem;
+    font-size: 1.2rem;
+    height: 100%;    
+}
+
+header .toggleLanguageButton {
+    margin-left: 1rem;
+}
+
+header .back-home {
+    margin-right: auto;
 }
 
 #page-content {
@@ -61,7 +71,7 @@ footer {
 
 h1 {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 100;
     margin: 15px;
 }
 

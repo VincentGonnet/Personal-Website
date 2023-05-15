@@ -4,13 +4,14 @@ import LanguageButton from "../components/LanguageButton.jsx";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import React from "react";
-import { HeadHrefLangs } from "astro-i18next/components";
+import i18next, { t } from "i18next";
+import { Trans, HeadHrefLangs } from "astro-i18next/components";
 
 const { pageTitle } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={i18next.language}>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
