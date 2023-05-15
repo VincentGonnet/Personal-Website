@@ -1,0 +1,10 @@
+---
+import MainLayout from "../../layouts/mainLayout.astro";
+import { t, changeLanguage } from "i18next";
+
+changeLanguage("fr");
+---
+
+<MainLayout title={t("home.pageTitle")}>
+  <h1>{t("cv.title")}</h1>
+</MainLayout>
