@@ -1,0 +1,29 @@
+---
+import Sidebar from "./Sidebar.astro";
+---
+
+<div class="hamburger self-center m-4 lg:hidden">
+	<span class="hamburger-line"></span>
+	<span class="hamburger-line"></span>
+	<span class="hamburger-line"></span>
+</div>
+
+<Sidebar />
+
+<style>
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+	@layer components {
+		.hamburger {
+			@apply cursor-pointer;
+		}
+
+		.hamburger-line {
+			@apply block w-8 h-[3px] my-[7px] bg-[var(--color-text)];
+		}
+	}
+</style>
+
+<script src="../scripts/nav-menu.ts"></script>
