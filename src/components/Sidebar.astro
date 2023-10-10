@@ -1,6 +1,10 @@
 ---
 import LanguagePicker from "./LanguagePicker.astro";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <aside
@@ -8,7 +12,7 @@ import LanguagePicker from "./LanguagePicker.astro";
 	<hr class="h-12" />
 	<LanguagePicker />
 	<hr class="h-7" />
-	<a class="m-2 text-lg" href="/timeline">Timeline</a>
-	<a class="m-2 text-lg" href="/projects">Projects</a>
-	<a class="m-2 text-lg" href="/contact">Contact</a>
+	<a class="m-2 text-lg" href={translatePath('/timeline/')}>{t('nav.timeline')}</a>
+	<a class="m-2 text-lg" href={translatePath('/projects/')}>{t('nav.projects')}</a>
+	<a class="m-2 text-lg" href={translatePath('/contact/')}>{t('nav.contacts')}</a>
 </aside>
