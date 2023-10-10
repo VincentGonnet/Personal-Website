@@ -1,10 +1,17 @@
 ---
 import Hamburger from "./Hamburger.astro";
 import Navbar from "./Navbar.astro";
+
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+import LanguagePicker from "./LanguagePicker.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <header class="flex w-full h-20 overflow-hidden">
-	<a href="/" class="self-center flex items-center lg:flex-start">
+	<a href={translatePath("/")} class="self-center flex items-center lg:flex-start">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
@@ -21,12 +28,15 @@ import Navbar from "./Navbar.astro";
 
 	<spacer class="flex-auto lg:hidden"></spacer>
 
-	<a href="/" class="self-center flex items-center lg:justify-center">
+	<a href={translatePath("/")} class="self-center flex items-center lg:justify-center">
 		<p class="font-extrabold text-xl md:text-[1.5rem]">Vincent Gonnet</p>
 	</a>
 
 	<spacer class="flex-auto"></spacer>
 
 	<Navbar />
+	<div class="hidden ml-5 lg:flex items-center">
+		<LanguagePicker />
+	</div>
 	<Hamburger />
 </header>
