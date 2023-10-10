@@ -1,17 +1,21 @@
 ---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <nav class="hidden lg:flex items-center">
-	<ul class="list-none text-[var(--color-text)]">
-		<li class="inline m-4 text-lg hover:underline">
-			<a href="/timeline">Timeline</a>
-		</li>
-		<li class="inline m-4 text-lg hover:underline">
-			<a href="/projects">Projects</a>
-		</li>
-		<li class="inline m-4 text-lg hover:underline">
-			<a href="/contact">Contact</a>
-		</li>
-	</ul>
+    <ul class="list-none text-[var(--color-text)]">
+        <li class="inline m-4 text-lg hover:underline">
+            <a href={translatePath('/timeline/')}>{t('nav.timeline')}</a>
+        </li>
+        <li class="inline m-4 text-lg hover:underline">
+            <a href={translatePath('/projects/')}>{t('nav.projects')}</a>
+        </li>
+        <li class="inline m-4 text-lg hover:underline">
+            <a href={translatePath('/contact/')}>{t('nav.contacts')}</a>
+        </li>
+    </ul>
 </nav>
