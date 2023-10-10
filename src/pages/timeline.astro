@@ -3,6 +3,193 @@ import GlobalLayout from "../layouts/GlobalLayout.astro";
 ---
 
 <GlobalLayout title="Vincent Gonnet - Timeline">
-	<h1>Timeline</h1>
-	<p>Coming soon...</p>
+	<div class="w-full flex justify-center">
+		<div class="outer">
+			<div class="card">
+				<div class="info">
+					<h3 class="title text-lg">
+						The begginings of a great journey
+					</h3>
+					<p>
+						Back in middle school, a math teacher gathered a few
+						students and created a programming club.<br />
+						 We were supposed to learn Scratch, but as I was already
+						familiar with it, he taught me the basics of Python
+						instead.
+						<br />I coded some simple text-based games, and learned
+						by myself how to make graphical interfaces with Tkinter.
+					</p>
+				</div>
+				<div class="info mt-4">
+					<h3 class="title text-lg">Messing with Arduino</h3>
+					<p>
+						In ninth grade, I went to an observation internship in a
+						company called "Industry Lab". They had electronic
+						components, and I got to code on an Arduino card for the
+						first time.<br /> C++ was new to me, but I managed to
+						learn how to use buttons, LEDs and LCD screens.<br />
+						 I was amazed by the possibilities, and got to
+						understand a little bit more the world around me.
+					</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="info">
+					<h3 class="title">Title 2</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+						sed do eiusmod tempor incididunt ut labore et dolore
+						magna aliqua. Ut enim ad minim veniam, quis nostrud
+						exercitation ullamco laboris nisi ut aliquip ex ea
+						commodo consequat.
+					</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="info">
+					<h3 class="title">Title 3</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+						sed do eiusmod tempor incididunt ut labore et dolore
+						magna aliqua. Ut enim ad minim veniam, quis nostrud
+						exercitation ullamco laboris nisi ut aliquip ex ea
+						commodo consequat.
+					</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="info">
+					<h3 class="title">Title 4</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+						sed do eiusmod tempor incididunt ut labore et dolore
+						magna aliqua. Ut enim ad minim veniam, quis nostrud
+						exercitation ullamco laboris nisi ut aliquip ex ea
+						commodo consequat.
+					</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="info">
+					<h3 class="title text-lg">And the story continues...</h3>
+					<p>
+						Who knows what the future holds ? <br /> I'm currently
+						an IT student in France, and I'm looking forward to
+						learning more about the world of programming.<br />
+						 You can check out my ongoing projects on my
+						<a
+							class="underline underline-offset-2"
+							href="https://github.com/VincentGonnet/"
+							target="_blank">GitHub</a
+						>
+						 or see the completed ones on the
+						<a class="underline underline-offset-2" href="/projects"
+							>projects page</a
+						>.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </GlobalLayout>
+
+<style>
+	/* Card container */
+	.card {
+		position: relative;
+		max-width: 600px;
+	}
+
+	/* setting padding based on even or odd */
+	.card:nth-child(odd) {
+		padding: 30px 0 30px 30px;
+	}
+	.card:nth-child(even) {
+		padding: 30px 30px 30px 0;
+	}
+	/* Global ::before */
+	.card::before {
+		content: "";
+		position: absolute;
+		width: 50%;
+		border: solid var(--color-primary);
+	}
+
+	/* Setting the border of top, bottom, left */
+	.card:nth-child(odd)::before {
+		left: 0px;
+		top: -4.5px;
+		bottom: -4.5px;
+		border-width: 5px 0 5px 5px;
+		border-radius: 50px 0 0 50px;
+	}
+
+	/* Setting the border of top, bottom, right */
+	.card:nth-child(even)::before {
+		right: 0;
+		top: 0;
+		bottom: 0;
+		border-width: 5px 5px 5px 0;
+		border-radius: 0 50px 50px 0;
+	}
+
+	/* Removing the border if it is the first card */
+	.card:first-child::before {
+		border-top: 0;
+		border-top-left-radius: 0;
+	}
+
+	/* Removing the border if it is the last card  and it's odd */
+	.card:last-child:nth-child(odd)::before {
+		border-bottom: 0;
+		border-bottom-left-radius: 0;
+	}
+
+	/* Removing the border if it is the last card  and it's even */
+	.card:last-child:nth-child(even)::before {
+		border-bottom: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	/* Information about the timeline */
+	.info {
+		display: flex;
+		flex-direction: column;
+		background: #2a3954;
+		color: white;
+		border-radius: 10px;
+		padding: 10px;
+	}
+
+	/* Title of the card */
+	.title {
+		color: var(--color-primary);
+		position: relative;
+	}
+
+	/* Timeline dot  */
+	.title::before {
+		content: "";
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		background: white;
+		border-radius: 999px;
+		border: 3px solid orangered;
+	}
+
+	/* text right if the card is even  */
+	.card:nth-child(even) > .info > .title {
+		text-align: right;
+	}
+
+	/* setting dot to the left if the card is odd */
+	.card:nth-child(odd) > .info > .title::before {
+		left: -45px;
+	}
+
+	/* setting dot to the right if the card is odd */
+	.card:nth-child(even) > .info > .title::before {
+		right: -45px;
+	}
+</style>
